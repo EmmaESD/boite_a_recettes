@@ -1,16 +1,20 @@
-<?php
-session_start();
+<?php 
+if (session_start()) {
 
+$username = $_SESSION['username'];
 $connectDatabase = new PDO("mysql:host=db;dbname=wordpress", "root", "admin");
 
-$request = $connectDatabase->prepare("INSERT INTO posts (user_id, title, ingredients, content, image_url) VALUES (:user_id, :title, :ingredients, :content, :image_url)");
+$request = $connectDatabase->prepare("INSERT INTO recipes (name, ingredients, steps, image_url, author) VALUES (:name, :ingredients, :steps, :image_url, :author)");
 
-$request->bindParam(':user_id', $_SESSION['user_id']);
-$request->bindParam(':title', $_POST['title']);
+$request->bindParam(':name', $_POST['name']);
 $request->bindParam(':ingredients', $_POST['ingredients']);
-$request->bindParam(':content', $_POST['content']);
+$request->bindParam(':steps', $_POST['steps']);
 $request->bindParam(':image_url', $_POST['image_url']);
+$request->bindParam(':author', $username);
 
 $request->execute();
 
-header('Location: ../userPage.php?success=Nouvelle recette ajoutée !');
+header('Location: ../parts/post-list.php?success=Nouvelle recette ajoutée !'); }
+
+
+?>

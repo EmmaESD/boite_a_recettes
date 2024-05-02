@@ -13,10 +13,14 @@
             </div>
         <?php endif; ?>
 
-        <form action="scripts/login-script.php" method="POST" class="container d-flex flex-column gap-3 w-50">
-            <input type="text" placeholder="Enter your pseudo" name="pseudo" class="form-control">
+        <!-- //input pseudo -->
+
+        <form action="parts/post-list.php" method="POST" class="container d-flex flex-column gap-3 w-50">
+            <input type="text" placeholder="Enter your pseudo" name="username" class="form-control">
             <input class="btn btn-primary" type="submit" value="Submit">
         </form>
+
+        
 
     </div>
 </div>
