@@ -1,15 +1,3 @@
-<?php
-    if(isset($_SESSION['id'])){
-    session_start();
-    }
-    
-    if(isset($_SESSION['id'])) {
-        var_dump($_SESSION['id']);
-        var_dump($_SESSION['username']);
-    }
-    
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,5 +12,5 @@
 </head>
 <body>
     <nav>
-        <a href="scripts/disconnect-script.php">Disconnect</a>
+        <a href="../scripts/disconnect-script.php">Disconnect</a>
     </nav> 
