@@ -52,6 +52,7 @@ $stepsList = explode(";", $recipe["steps"]);
             <p class="content"><?php echo $recipe['steps']; ?></p>
             <img src="<?php echo $recipe['image_url']; ?>" alt="">
             <p>edit by <?php echo $_SESSION['username'];?></p>
+            <button><a href="../scripts/delete-script.php?id=<?php echo htmlspecialchars ($recipe["id"]); ?>">Delete</a></button>
         </div>
         <?php endforeach ?>
     </div>
