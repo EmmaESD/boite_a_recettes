@@ -1,4 +1,3 @@
-
 <?php require_once 'parts/header.php'; ?>
 
 <section class="login d-flex justify-content-center align-items-center ">
@@ -19,11 +18,6 @@
             <input type="text" placeholder="Enter your pseudo" name="username" class="form-control">
             <input class="btn btn-primary" type="submit" value="Submit">
         </form>
-
-        
-
-    </div>
-</div>
 </section>
 
 <?php require_once 'parts/footer.php'; ?>
