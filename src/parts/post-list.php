@@ -1,16 +1,14 @@
-
-
-<?php if($_POST['username']){
-    session_start();
+<?php
+session_start();
+if(!isset($_POST['username'])&&!isset($_SESSION['username'])){
+    header('Location: ./index.php?error=Veuillez entrer un pseudo');
+} if (isset($_POST['username'])) {
     $_SESSION['username'] = $_POST['username'];
-    header('Location: ../userPage.php?success=Bienvenue');  
-} else {
-    header('Location: ../index.php?error=Veuillez entrer un pseudo');
-}
-        ?>
+};
+?>
 
- 
 <?php require_once 'header.php'; ?>
+
 
 <section id="userPage">
     <div class="form-recipe">
@@ -22,11 +20,11 @@
             <input type="submit" value="Envoyer">
         </form>
     </div>
-
+<?php
     
 
-    <!-- //script to get recipes -->
-   <?php 
+     //script to get recipes
+  
 
 $connectDatabase = new PDO("mysql:host=db;dbname=wordpress", "root", "admin");
 // prepare request(SELECT * FROM posts)
@@ -37,20 +35,25 @@ $request->bindParam(":username", $_SESSION['username']);
 $request->execute();
 // fetch ALL data from table posts
 $recipes = $request->fetchAll(PDO::FETCH_ASSOC);?>
+
+<?php foreach ($recipes as $recipe): 
+
+$ingredientsList = explode(";", $recipe["ingredients"]);
+$stepsList = explode(";", $recipe["steps"]);
+?>
 <!-- 
 
 //show recipes -->
     <div class="recipe-container">
-    <?php foreach($recipes as $recipe) :?>
         
         <div class="recipe-content" >
             <h1 class="title"><?php echo $recipe['name']; ?></h1>
             <h2 class="ingredients"><?php echo $recipe['ingredients']; ?></h2>
             <p class="content"><?php echo $recipe['steps']; ?></p>
             <img src="<?php echo $recipe['image_url']; ?>" alt="">
-            <p>edit by <?php echo $_POST['username']?></p>
+            <p>edit by <?php echo $_SESSION['username'];?></p>
         </div>
-        <?php endforeach; ?>
+        <?php endforeach ?>
     </div>
 </section>
 
