@@ -36,7 +36,7 @@ $request->execute();
 // fetch ALL data from table posts
 $recipes = $request->fetchAll(PDO::FETCH_ASSOC);?>
 
-<?php foreach ($recipes as $recipe): 
+<?php foreach ($recipes as $recipe): é
 
 $ingredientsList = explode(";", $recipe["ingredients"]);
 $stepsList = explode(";", $recipe["steps"]);
