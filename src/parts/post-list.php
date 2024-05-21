@@ -45,7 +45,6 @@ $stepsList = explode(";", $recipe["steps"]);
 
 //show recipes -->
     <div class="recipe-container">
-        
         <div class="recipe-content" >
             <h1 class="title"><?php echo $recipe['name']; ?></h1>
             <h2 class="ingredients"><?php echo $recipe['ingredients']; ?></h2>
