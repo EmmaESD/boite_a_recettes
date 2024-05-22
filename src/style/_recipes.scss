@@ -3,11 +3,12 @@
   width: 100%;
   padding: $spacing-xs;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-image: url("../assets/homepage.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  min-height: 1000px;
 }
 
 .disconnect-container {
