@@ -1,33 +1,28 @@
 <?php
-// connect to db
+
+session_start();
+
 $connectDatabase = new PDO("mysql:host=db;dbname=wordpress", "root", "admin");
-// Récupérer les données de l'entrée existante
-$stmt = $connectDatabase->prepare('SELECT * FROM recipes WHERE id = :id');
-$stmt->bindParam(':id', $_GET['id']);
-$entry = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if ($entry) {
-    // Supprimer l'ID pour éviter les conflits lors de l'insertion
-    unset($entry['id']);
-
-    // Préparer les colonnes et les valeurs pour l'insertion
-    $columns = implode(", ", array_keys($entry));
-    $placeholders = implode(", ", array_fill(0, count($entry), '?'));
-    $values = array_values($entry);
-
-    // Insérer la nouvelle entrée
-    $insertStmt = $connectDatabase->prepare("INSERT INTO recipes ($columns) VALUES ($placeholders)");
-    $insertStmt->execute($values);
-    
-
-    // Récupérer l'ID de la nouvelle entrée
-    $newEntryId = $connectDatabase->lastInsertId();
-    header('Location: ../parts/post-list.php');
-    echo "Nouvelle entrée clonée avec l'ID : " . $newEntryId;
-} else {
-    echo "Entrée originale non trouvée.";
-}
-
-?>
+//prepare request
+$request = $connectDatabase->prepare("SELECT * FROM recipes where id = :id");
 
 
+$request->bindParam(':id', $_GET['id']);
+//execute request
+$request->execute();
+
+//fetch all data from table posts
+$recipes = $request->fetchAll(PDO::FETCH_ASSOC);
+
+
+$request = $connectDatabase->prepare("INSERT INTO recipes (name, ingredients, steps, image_url, author) VALUES (:name, :ingredients, :steps, :image_url, :author)");
+
+$request->bindParam(':name', $recipes['0']['name']);
+$request->bindParam(':ingredients', $recipes['0']['ingredients']);
+$request->bindParam(':steps', $recipes['0']['steps']);
+$request->bindParam(':image_url', $recipes['0']['image_url']);
+$request->bindParam(':author', $recipes['0']['author']);
+
+$request->execute();
+
+header('Location: ../parts/post-list.php?success=Le post a bien été dupliqué');
