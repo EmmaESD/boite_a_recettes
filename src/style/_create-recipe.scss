@@ -1,0 +1,45 @@
+.create-page {
+  width: 100%;
+  padding: $scpacing-sm;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../assets/recipe-page.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.content-create {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container-return {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.form-title-container {
+  display: flex;
+  padding: 0 $spacing-xl;
+  align-items: center;
+  gap: $scpacing-sm;
+  flex-direction: column;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $scpacing-sm;
+  padding: 0px 300px;
+
+  textarea {
+    height: 100px;
+  }
+  textarea,
+  input {
+    border: 2px solid $bg-color-darker;
+    border-radius: 5px;
+  }
+}

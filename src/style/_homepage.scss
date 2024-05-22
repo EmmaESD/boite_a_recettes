@@ -1,0 +1,39 @@
+.homepage {
+  width: 100%;
+  padding: 150px $spacing-xl;
+  display: flex;
+  align-items: center;
+  background-image: url("../assets/homepage.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.content-homepage {
+  display: flex;
+  gap: 100px;
+  align-items: center;
+}
+
+.pseudo-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $scpacing-sm;
+
+  h1 {
+    font-size: 3rem;
+  }
+  .pseudo {
+    border: 2px solid $bg-color-darker;
+    border-radius: 5px;
+  }
+}
+
+.image-home {
+  width: 400px;
+  height: 400px;
+  background-image: url("../assets/ramen.png");
+  background-position: center;
+  background-size: cover;
+}

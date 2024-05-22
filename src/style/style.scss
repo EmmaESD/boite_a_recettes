@@ -1,13 +1,27 @@
+@import "_variables.scss";
+@import "_homepage.scss";
+@import "_recipes.scss";
+@import "_create-recipe.scss";
+
 * {
   margin: 0;
   box-sizing: border-box;
 }
 
-.login {
-  height: 100vh;
+body {
+  width: 100%;
 }
 
-.bg-color {
-  border: solid 2px rgba(86, 133, 213, 0.496);
-  border-radius: 50px;
+button,
+.submit {
+  border: none;
+  background-color: $bg-color-darker;
+  border-radius: 5px;
+  color: $bg-white;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: $bg-white;
 }
